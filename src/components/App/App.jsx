@@ -66,12 +66,14 @@ class App extends Component {
 
   render() {
     const { contacts, filter } = this.state;
+    const number = this.state.contacts.number;
+    const name = this.state.contacts.name;
     return (
       <>
         <InputHeader>PhoneBook</InputHeader>
         <Form
-          name={this.state.contacts.name}
-          number={this.state.contacts.number}
+          name={name}
+          number={number}
           addContacts={this.addContacts}
           handleInputChange={this.handleChangeInput}
         />
