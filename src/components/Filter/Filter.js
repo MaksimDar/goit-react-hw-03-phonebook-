@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
 import { FilterHeader, FilterLabel } from './Filter.styled';
 
-const Filter = ({ ChangeContact }) => {
+const Filter = ({ value, ChangeContact }) => {
   return (
     <FilterLabel htmlFor="filter">
       <FilterHeader>Find contacts by name</FilterHeader>
       <input
         type="text"
         name="filter"
+        value={value}
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         onChange={ChangeContact}
@@ -19,5 +20,6 @@ const Filter = ({ ChangeContact }) => {
 export default Filter;
 
 Filter.propTypes = {
+  value: PropTypes.string,
   ChangeContact: PropTypes.func,
 };
