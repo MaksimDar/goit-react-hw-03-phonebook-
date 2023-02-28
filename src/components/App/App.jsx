@@ -22,9 +22,10 @@ class App extends Component {
     }
   }
 
-  handleChangeInput = evt => {
-    const targetInput = evt.currentTarget;
-    this.setState({ [targetInput.name]: targetInput.value });
+  handleChangeInput = e => {
+    const { name, value } = e.currentTarget;
+    console.log(name);
+    this.setState({ [name]: value });
   };
   handleFilterChange = event => {
     this.setState({
@@ -63,9 +64,16 @@ class App extends Component {
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
   };
+  getVisibleContacts = normalizedFilter => {
+    return this.state.contacts.filter(contact =>
+      contact.name.toLocaleLowerCase().includes(normalizedFilter)
+    );
+  };
 
   render() {
-    const { contacts, filter } = this.state;
+    const normalizedFilter = this.state.filter.toLocaleLowerCase();
+    const visibleContats = this.getVisibleContacts(normalizedFilter);
+    const { filter } = this.state;
     const { number, name } = this.state.contacts;
     return (
       <>
@@ -78,11 +86,7 @@ class App extends Component {
         />
         <InputHeader>Contacts</InputHeader>
         <Filter value={filter} ChangeContact={this.handleFilterChange} />
-        <List
-          filter={filter}
-          contacts={contacts}
-          deleteContact={this.removeItem}
-        />
+        <List contacts={visibleContats} deleteContact={this.removeItem} />
       </>
     );
   }

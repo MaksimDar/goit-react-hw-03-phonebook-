@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types';
 
 import ContactItem from '../ContactItem/ContactItem';
-const List = ({ contacts, filter, deleteContact }) => {
+const List = ({ contacts, deleteContact }) => {
   return (
     <ul>
       {contacts
-        .filter(item => item.name.toLowerCase().includes(filter.toLowerCase()))
         .map(({ id, name, number }) => (
           <ContactItem
             key={id}
