@@ -75,7 +75,7 @@ class App extends Component {
           handleInputChange={this.handleChangeInput}
         />
         <InputHeader>Contacts</InputHeader>
-        <Filter value={filter} ChangeContact={this.handleFilterChange} />
+        <Filter ChangeContact={this.handleFilterChange} />
         <List
           filter={filter}
           contacts={contacts}

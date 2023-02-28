@@ -1,6 +1,6 @@
 import { ContactForm, Label, Span, AddContactButton } from './Form.styled';
 import PropTypes from 'prop-types';
-const Form = ({ addContacts, handleInputChange }) => {
+const Form = ({ name, number, addContacts, handleInputChange }) => {
   return (
     <ContactForm onSubmit={addContacts}>
       <Label htmlFor="name">
