@@ -77,7 +77,7 @@ class App extends Component {
     const { number, name } = this.state.contacts;
     return (
       <>
-        <InputHeader>PhoneBoo</InputHeader>
+        <InputHeader>PhoneBook</InputHeader>
         <Form
           name={name}
           number={number}
