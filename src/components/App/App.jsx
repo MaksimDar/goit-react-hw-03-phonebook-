@@ -24,7 +24,6 @@ class App extends Component {
 
   handleChangeInput = e => {
     const { name, value } = e.currentTarget;
-    console.log(name);
     this.setState({ [name]: value });
   };
   handleFilterChange = event => {
@@ -64,29 +63,29 @@ class App extends Component {
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
   };
-  // getVisibleContacts = normalizedFilter => {
-  //   return this.state.contacts.filter(contact =>
-  //     contact.name.toLocaleLowerCase().includes(normalizedFilter)
-  //   );
-  // };
+  getVisibleContacts = normalizedFilter => {
+    return this.state.contacts.filter(contact =>
+      contact.name.toLocaleLowerCase().includes(normalizedFilter)
+    );
+  };
 
   render() {
-    // const normalizedFilter = this.state.filter.toLocaleLowerCase();
-    // const visibleContats = this.getVisibleContacts(normalizedFilter);
+    const normalizedFilter = this.state.filter.toLocaleLowerCase();
+    const visibleContacts = this.getVisibleContacts(normalizedFilter);
     const { filter } = this.state;
-    // const { number, name } = this.state.contacts;
+    const { number, name } = this.state.contacts;
     return (
       <>
         <InputHeader>PhoneBook</InputHeader>
         <Form
-          // name={name}
-          // number={number}
+          name={name}
+          number={number}
           addContacts={this.addContacts}
           handleInputChange={this.handleChangeInput}
         />
         <InputHeader>Contacts</InputHeader>
         <Filter value={filter} ChangeContact={this.handleFilterChange} />
-        <List contacts={this.state.contacts} deleteContact={this.removeItem} />
+        <List contacts={visibleContacts} deleteContact={this.removeItem} />
       </>
     );
   }
