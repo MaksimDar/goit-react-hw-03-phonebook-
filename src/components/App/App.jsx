@@ -74,13 +74,13 @@ class App extends Component {
     // const normalizedFilter = this.state.filter.toLocaleLowerCase();
     // const visibleContats = this.getVisibleContacts(normalizedFilter);
     const { filter } = this.state;
-    const { number, name } = this.state.contacts;
+    // const { number, name } = this.state.contacts;
     return (
       <>
         <InputHeader>PhoneBook</InputHeader>
         <Form
-          name={name}
-          number={number}
+          // name={name}
+          // number={number}
           addContacts={this.addContacts}
           handleInputChange={this.handleChangeInput}
         />
