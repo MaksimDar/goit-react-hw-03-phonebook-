@@ -64,15 +64,15 @@ class App extends Component {
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
   };
-  getVisibleContacts = normalizedFilter => {
-    return this.state.contacts.filter(contact =>
-      contact.name.toLocaleLowerCase().includes(normalizedFilter)
-    );
-  };
+  // getVisibleContacts = normalizedFilter => {
+  //   return this.state.contacts.filter(contact =>
+  //     contact.name.toLocaleLowerCase().includes(normalizedFilter)
+  //   );
+  // };
 
   render() {
-    const normalizedFilter = this.state.filter.toLocaleLowerCase();
-    const visibleContats = this.getVisibleContacts(normalizedFilter);
+    // const normalizedFilter = this.state.filter.toLocaleLowerCase();
+    // const visibleContats = this.getVisibleContacts(normalizedFilter);
     const { filter } = this.state;
     const { number, name } = this.state.contacts;
     return (
@@ -86,7 +86,7 @@ class App extends Component {
         />
         <InputHeader>Contacts</InputHeader>
         <Filter value={filter} ChangeContact={this.handleFilterChange} />
-        <List contacts={visibleContats} deleteContact={this.removeItem} />
+        <List contacts={this.state.contacts} deleteContact={this.removeItem} />
       </>
     );
   }
